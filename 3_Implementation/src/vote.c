@@ -1,4 +1,4 @@
-#include"head.h"
+#include"headfile.h"
 
 int main(){
     while(1){
