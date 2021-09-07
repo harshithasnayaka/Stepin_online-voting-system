@@ -1,17 +1,8 @@
-**
- * @file Election.h
- * @author your name (you@domain.com)
- * @brief 
- * @version 0.1
- * @date 2021-09-07
- * 
- * @copyright Copyright (c) 2021
- * 
- */
 #include<stdio.h>
 #include<conio.h>
 #include<string.h>
 #include<stdlib.h>
+
 struct currentValidID{
     int year;
     char branch[6];
@@ -22,11 +13,14 @@ typedef struct candidate{
     char cname[20];
     int votes;
 }CANDIDATE;
-struct 
+
+
+struct currentValidID currentValidID; 
 CANDIDATE candidateArray[20]; 
 int numberOfCandidates; 
-char studentVotes[200];
-int extractYear(char userID[15])
+char studentVotes[200]; 
+
+int extractYears(char userID[15])
 {
     int year=0;
     char tmp;
@@ -37,7 +31,7 @@ int extractYear(char userID[15])
     return year;
 }
 
-int extractRollNo(char userID[15])
+int extractRollNos(char userID[15])
 {
     int rollno=0;
     char tmp;
@@ -47,7 +41,7 @@ int extractRollNo(char userID[15])
     }
     return rollno;
 }
-int checkBranchCode(char userID[15])
+int checkBranchCodes(char userID[15])
 {
     char branchCode[6];
     for(int i=4;i<9;i++){
@@ -59,17 +53,16 @@ int checkBranchCode(char userID[15])
     else
         return 0;
 }
-
-int authenticateAdmin(){
+int authenticateAdmins(){
     char username[15], password[6];
     
-    printf("\nEnter username: ");
+    printf("\nEnter the username: ");
     scanf("%s",username);
     if((strcmp(username,"admin"))!=0)
         return 0;
     else
     {
-        printf("Enter Password: ");
+        printf("Enter the Password: ");
         int i=0;
         for(i=0;i<5;i++)
         {
@@ -83,18 +76,18 @@ int authenticateAdmin(){
     return 1;
 }
 
-void banID(){
+void banIDs(){
     printf("\nCreating Banned.txt...\n");
-    FILE *fp=fopen("Banned.txt", "w");
+    FILE *fp=fopen("Banned.txt created", "w");
     if(fp==NULL){
-        printf("Error: Banned.txt not created.\n");
+        printf("Banned.txt not created.\n");
         fclose(fp);
         return;
     }
-    printf("Just Enter last roll no to ban\nPress 0 to exit... ");
+    printf(" Enter  rollnumber to ban\nPress 0 to exit... ");
     int input;
     while(1){
-        printf("\nEnter Number: ");
+        printf("\nEnter the Number: ");
         scanf("%d",&input);
         if(input==0)
             break;
@@ -102,11 +95,11 @@ void banID(){
         fprintf(fp,"%d\n",input);
     }
     fclose(fp);
-    printf("Created Successfully\n");
+    printf("file Creat Seuccessfully\n");
 }
 
 void createCandidateFiles(){
-    printf("\nCreating candidate files...\n");
+    printf("\nCreating the candidate files...\n");
     FILE *fp;
 	char filename[20];
     for(int i = 1;i <= numberOfCandidates; i++){
@@ -118,7 +111,7 @@ void createCandidateFiles(){
         );
 		fclose(fp);
     }
-    printf("Created Files successfully\n");
+    printf("Created the Files successfully\n");
 }
 
 void deleteIllegalVote(char userID[15])
@@ -133,7 +126,7 @@ void deleteIllegalVote(char userID[15])
     studentVotes[location-1]='0';
     if ((fp = fopen(filename,"r")) == NULL)    
     {    
-        printf("\nFile cannot be opened...Operation Failed");
+        printf("\nFile cannot be opened Operation Failed");
         return;
     }
     printf("\nDeleting in process...\n ");    
@@ -251,6 +244,8 @@ void loadElectionInfoFromFile()
     fseek(f1,2,SEEK_CUR);
     fscanf(f1,"%d",&numberOfCandidates);
     fclose(f1);
+   
+    //load candidates info and student votes
     for (int i = 0; i < currentValidID.totalVoters; i++)
     {
         studentVotes[i] = '0';
@@ -270,13 +265,16 @@ void loadElectionInfoFromFile()
         }
         fclose(f2);
     }
+
+    //load banned votes
     int location;
     f3=fopen("banned.txt","r+");
     while(!feof(f3)){
         fscanf(f3,"%d",&location);
         studentVotes[location-1] = '$';
     }
-    fclose(f3);   
+    fclose(f3);
+    
 }
 
 void adminPanel()
@@ -372,6 +370,12 @@ int isVoted(char userID[15])
         return 1;
 }
 
+int isBanned(char userID[15]){
+    int location=extractRollNo(userID);
+    if(studentVotes[location-1]=='$')
+        return 1;
+    else
+        return 0;
 }
 
 void saveVote(char userID[15],char voteInput)
@@ -406,7 +410,13 @@ void studentPanel()
             printf("\n  Invalid User ID(Press Enter)");
             getch();
             continue;
-	}
+        }
+        if(isBanned(userID)!=0)
+        {
+            printf("\nThis User ID is currently banned...\nContact Admin for the reason...(Press Enter to continue)");
+            getch();
+            continue;
+        }
         if(isVoted(userID)!=0)
         {
             printf("\n  Your PRN entered is already voted\n  Contact Admin for furthur query");
