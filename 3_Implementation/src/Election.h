@@ -14,14 +14,11 @@ typedef struct candidate{
     int votes;
 }CANDIDATE;
 
-//GLOBALS --------------------------------------------------------
-struct currentValidID currentValidID; //stores current Valid user ID parameters
-CANDIDATE candidateArray[20]; //to store information all candidates
-int numberOfCandidates; //Total number of candidates standing for election
-char studentVotes[200]; //to store information of votes given by each student
-//----------------------------------------------------------------
+struct currentValidID currentValidID; 
+CANDIDATE candidateArray[20];
+int numberOfCandidates; 
+char studentVotes[200]; 
 
-//To extract year from userID -- For example, userID:2018btecs00064 year:2018 
 int extractYear(char userID[15])
 {
     int year=0;
@@ -44,7 +41,6 @@ int extractRollNo(char userID[15])
     return rollno;
 }
 
-//Will check whether the global branch code and inputed branch code is matching or not
 int checkBranchCode(char userID[15])
 {
     char branchCode[6];
@@ -81,28 +77,6 @@ int authenticateAdmin(){
     return 1;
 }
 
-void banID(){
-    printf("\nCreating Banned.txt...\n");
-    FILE *fp=fopen("Banned.txt", "w");
-    if(fp==NULL){
-        printf("Error: Banned.txt not created.\n");
-        fclose(fp);
-        return;
-    }
-    printf("Just Enter last roll no to ban\nPress 0 to exit... ");
-    int input;
-    while(1){
-        printf("\nEnter Number: ");
-        scanf("%d",&input);
-        if(input==0)
-            break;
-        studentVotes[input-1]='$';
-        fprintf(fp,"%d\n",input);
-    }
-    fclose(fp);
-    printf("Created Successfully\n");
-}
-
 void createCandidateFiles(){
     printf("\nCreating candidate files...\n");
     FILE *fp;
@@ -124,7 +98,6 @@ void deleteIllegalVote(char userID[15])
     FILE *fp,*fcp;
     char filename[20];
     char line[20];
-
     int location = extractRollNo(userID);
     sprintf(filename,"candidate%d.txt",candidateArray[studentVotes[location-1]-49].cid);
     candidateArray[studentVotes[location-1]-49].votes--;
@@ -249,8 +222,7 @@ void loadElectionInfoFromFile()
     fseek(f1,2,SEEK_CUR);
     fscanf(f1,"%d",&numberOfCandidates);
     fclose(f1);
-   
-    //load candidates info and student votes
+
     for (int i = 0; i < currentValidID.totalVoters; i++)
     {
         studentVotes[i] = '0';
@@ -270,15 +242,6 @@ void loadElectionInfoFromFile()
         }
         fclose(f2);
     }
-
-    //load banned votes
-    int location;
-    f3=fopen("banned.txt","r+");
-    while(!feof(f3)){
-        fscanf(f3,"%d",&location);
-        studentVotes[location-1] = '$';
-    }
-    fclose(f3);
     
 }
 
@@ -297,9 +260,9 @@ void adminPanel()
         while(1)
         {
             char inputID[15];
-            char input;char banInp;
+            char input;
             int WinnerCid, totalVotedNow=0;
-            printf("\n1.New Election\n2.Continue Previous Election\n3.Delete Illegal Vote\n4.Ban User IDs\n5.Result\n6.Logout\nOption:");
+            printf("\n1.New Election\n2.Continue Previous Election\n3.Delete Illegal Vote \n4.Result\n5.Logout\nOption:");
 			scanf(" %c",&input);
 
             switch(input)
@@ -317,14 +280,8 @@ void adminPanel()
                     scanf("%s",inputID);
                     deleteIllegalVote(inputID);
                     break;
+                
                 case '4':
-                    printf("Do you want to ban particular ID's?\nPress 1 if yes or any other key to continue...");
-                    scanf(" %c",&banInp);
-                    if(banInp=='1'){
-                        banID();
-                    }
-                    break;
-                case '5':
                     WinnerCid = getWinner();
                     if(WinnerCid != -1){
                         printf("\nWinner is %s with %d votes\n",candidateArray[WinnerCid-1].cname,candidateArray[WinnerCid-1].votes);
@@ -339,7 +296,7 @@ void adminPanel()
                     }
                     printf("\nVoting Percentage: %d %%\n\n",(totalVotedNow*100)/currentValidID.totalVoters);
                     break;
-                case '6':
+                case '5':
                     return;
                 default:
                     printf("Invalid Option");
@@ -375,14 +332,6 @@ int isVoted(char userID[15])
         return 1;
 }
 
-int isBanned(char userID[15]){
-    int location=extractRollNo(userID);
-    if(studentVotes[location-1]=='$')
-        return 1;
-    else
-        return 0;
-}
-
 void saveVote(char userID[15],char voteInput)
 {
     char filename[20];
@@ -416,15 +365,8 @@ void studentPanel()
             getch();
             continue;
         }
-        if(isBanned(userID)!=0)
-        {
-            printf("\nThis User ID is currently banned...\nContact Admin for the reason...(Press Enter to continue)");
-            getch();
-            continue;
-        }
         if(isVoted(userID)!=0)
-        {
-            printf("\n  Your PRN entered is already voted\n  Contact Admin for furthur query");
+        { printf("\n  Your PRN entered is already voted\n  Contact Admin for furthur query");
             getch();
             continue;
         }
@@ -447,4 +389,3 @@ void studentPanel()
         getch();
     }
 };
-
