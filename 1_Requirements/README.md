@@ -13,12 +13,12 @@
 | HS5 |student can vote the candidate at once|Imlpemented|
 | HS6 |Get the message about winner|Feature|
 
-# LOWlevel Requirements
+# Lowlevel Requirements
 | ID  |                   Function                                      | Description|status |
 |-----|-----------------------------------------------------------------|--------|-----------|
 | Ls01 |authenticateAdmin()|To authenticate admin|Imlpemented|
-| Ls02 |isValid()|To authenticate student|Imlpemented|
-| Ls03 |getwinner()|To get winner of the election|Imlpemented|
+| Ls02 |isValid()HS3|To authenticate student|Imlpemented|
+| Ls03 |getwinner()HS6|To get winner of the election|Imlpemented|
 
 
 
