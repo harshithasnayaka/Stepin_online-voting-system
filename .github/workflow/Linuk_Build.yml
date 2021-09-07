@@ -14,4 +14,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: make all
-      run: make all - STEPin_Stepin_online-voting-system\3_Implementation
+      run: make all - Stepin_online-voting-system\3_Implementation
