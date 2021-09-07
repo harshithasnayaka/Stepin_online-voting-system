@@ -2,7 +2,6 @@
 #include<conio.h>
 #include<string.h>
 #include<stdlib.h>
-
 struct currentValidID{
     int year;
     char branch[6];
@@ -13,15 +12,10 @@ typedef struct candidate{
     char cname[20];
     int votes;
 }CANDIDATE;
-
-//GLOBALS --------------------------------------------------------
-struct currentValidID currentValidID; //stores current Valid user ID parameters
-CANDIDATE candidateArray[20]; //to store information all candidates
-int numberOfCandidates; //Total number of candidates standing for election
-char studentVotes[200]; //to store information of votes given by each student
-//----------------------------------------------------------------
-
-//To extract year from userID -- For example, userID:2018btecs00064 year:2018 
+struct 
+CANDIDATE candidateArray[20]; 
+int numberOfCandidates; 
+char studentVotes[200];
 int extractYear(char userID[15])
 {
     int year=0;
@@ -270,16 +264,13 @@ void loadElectionInfoFromFile()
         }
         fclose(f2);
     }
-
-    //load banned votes
     int location;
     f3=fopen("banned.txt","r+");
     while(!feof(f3)){
         fscanf(f3,"%d",&location);
         studentVotes[location-1] = '$';
     }
-    fclose(f3);
-    
+    fclose(f3);   
 }
 
 void adminPanel()
