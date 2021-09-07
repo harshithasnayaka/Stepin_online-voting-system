@@ -1,4 +1,4 @@
-#include"election.h"
+#include"headfine.h"
 
 int main(){
     while(1){
