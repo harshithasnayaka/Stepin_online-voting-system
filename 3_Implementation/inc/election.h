@@ -37,8 +37,6 @@ int extractRollNo(char userID[15])
     }
     return rollno;
 }
-
-//Will check whether the global branch code and inputed branch code is matching or not
 int checkBranchCode(char userID[15])
 {
     char branchCode[6];
@@ -243,8 +241,6 @@ void loadElectionInfoFromFile()
     fseek(f1,2,SEEK_CUR);
     fscanf(f1,"%d",&numberOfCandidates);
     fclose(f1);
-   
-    //load candidates info and student votes
     for (int i = 0; i < currentValidID.totalVoters; i++)
     {
         studentVotes[i] = '0';
@@ -366,12 +362,6 @@ int isVoted(char userID[15])
         return 1;
 }
 
-int isBanned(char userID[15]){
-    int location=extractRollNo(userID);
-    if(studentVotes[location-1]=='$')
-        return 1;
-    else
-        return 0;
 }
 
 void saveVote(char userID[15],char voteInput)
@@ -406,13 +396,7 @@ void studentPanel()
             printf("\n  Invalid User ID(Press Enter)");
             getch();
             continue;
-        }
-        if(isBanned(userID)!=0)
-        {
-            printf("\nThis User ID is currently banned...\nContact Admin for the reason...(Press Enter to continue)");
-            getch();
-            continue;
-        }
+	}
         if(isVoted(userID)!=0)
         {
             printf("\n  Your PRN entered is already voted\n  Contact Admin for furthur query");
