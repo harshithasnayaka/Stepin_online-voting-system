@@ -12,23 +12,17 @@ typedef struct candidate{
     int cid;
     char cname[20];
     int votes;
-}CANDIDATE;
-
-//GLOBALS --------------------------------------------------------
-struct currentValidID currentValidID; //stores current Valid user ID parameters
-CANDIDATE candidateArray[20]; //to store information all candidates
-int numberOfCandidates; //Total number of candidates standing for election
-char studentVotes[200]; //to store information of votes given by each student
-//----------------------------------------------------------------
-
-//To extract year from userID -- For example, userID:2018btecs00064 year:2018 
+}
+CANDIDATE;
+struct currentValidID currentValidID;
+CANDIDATE candidateArray[20]; 
+int numberOfCandidates; 
 int extractYear(char userID[15])
-{
-    int year=0;
+{   int year=0;
     char tmp;
     for(int i=0;i<4;i++){
         tmp=userID[i];
-		year=(year*10)+(tmp-48);
+        year=(year*10)+(tmp-48);
     }
     return year;
 }
@@ -44,7 +38,6 @@ int extractRollNo(char userID[15])
     return rollno;
 }
 
-//Will check whether the global branch code and inputed branch code is matching or not
 int checkBranchCode(char userID[15])
 {
     char branchCode[6];
@@ -85,11 +78,11 @@ void banID(){
     printf("\nCreating Banned.txt...\n");
     FILE *fp=fopen("Banned.txt", "w");
     if(fp==NULL){
-        printf("Error: Banned.txt not created.\n");
+        printf("Banned.txt not created.\n");
         fclose(fp);
         return;
     }
-    printf("Just Enter last roll no to ban\nPress 0 to exit... ");
+    printf("Just Enter last roll no to ban\nPress 0 to exit ");
     int input;
     while(1){
         printf("\nEnter Number: ");
@@ -249,8 +242,6 @@ void loadElectionInfoFromFile()
     fseek(f1,2,SEEK_CUR);
     fscanf(f1,"%d",&numberOfCandidates);
     fclose(f1);
-   
-    //load candidates info and student votes
     for (int i = 0; i < currentValidID.totalVoters; i++)
     {
         studentVotes[i] = '0';
@@ -270,17 +261,13 @@ void loadElectionInfoFromFile()
         }
         fclose(f2);
     }
-
-    //load banned votes
     int location;
     f3=fopen("banned.txt","r+");
     while(!feof(f3)){
         fscanf(f3,"%d",&location);
         studentVotes[location-1] = '$';
     }
-    fclose(f3);
-    
-}
+    fclose(f3);}
 
 void adminPanel()
 {
@@ -299,7 +286,7 @@ void adminPanel()
             char inputID[15];
             char input;char banInp;
             int WinnerCid, totalVotedNow=0;
-            printf("\n1.New Election\n2.Continue Previous Election\n3.Delete Illegal Vote\n4.Ban User IDs\n5.Result\n6.Logout\nOption:");
+            printf("\n1.New Election\n2.Continue  Election\n3.Delete Illegal Vote\n4.Ban User IDs\n5.Result\n6.Logout\nOption:");
 			scanf(" %c",&input);
 
             switch(input)
@@ -350,16 +337,12 @@ void adminPanel()
     }
 
 };
-
-
 int isValid(char userID[15])
 {
     if(strlen(userID)!=14)
-        return 0;
-    
+    return 0;
     int inputedYear=extractYear(userID);
     int inputedRollNo = extractRollNo(userID);
-    
     if(inputedYear!=currentValidID.year || checkBranchCode(userID)!=1 || inputedRollNo>currentValidID.totalVoters)
         return 0;
 
@@ -397,8 +380,6 @@ void saveVote(char userID[15],char voteInput)
     fprintf(fp,"\n%d",location);
     fclose(fp);
 }
-
-
 void studentPanel()
 {
     char userID[15];
@@ -418,7 +399,7 @@ void studentPanel()
         }
         if(isBanned(userID)!=0)
         {
-            printf("\nThis User ID is currently banned...\nContact Admin for the reason...(Press Enter to continue)");
+            printf("\nThis User ID is currently banned\nContact Admin for the reason(Press Enter to continue)");
             getch();
             continue;
         }
@@ -438,7 +419,7 @@ void studentPanel()
         printf("*");
         if(voteInput-48 < 1 || voteInput-48 > numberOfCandidates)
         {
-            printf("\nInvalid Vote\nTry Again...");
+            printf("\nInvalid ");
             getch();
             continue;
         }
