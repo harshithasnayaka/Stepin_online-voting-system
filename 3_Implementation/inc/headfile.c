@@ -5,12 +5,6 @@
 char heading()//HEADING
 {
     system("cls");
-
-	printf("\n\t\t    SIR M VISVESVARAYA INSTITUTE OF TECHNOLOGY\n");
-	printf("------------------------------------------------------------------------------------\n\n");
-	printf("\t\t  WELCOME TO THE SMVIT STUDENT PRESIDENT ELECTION\n\n");
-	printf("\t\t\t   **************************\n");
-	printf("\n\n\n");
 }
 
 int main()
@@ -26,16 +20,15 @@ int main()
 	fflush(stdin);
 	//USER ENTRY
 	printf("\n\n\t\t\t  ENTER NAME:");
-    gets(name1);
-    //Removing spaces in name
+        gets(name1);
 	len=strlen(name1);
 	for(i=0; i<len; i++)
 	{
 		if(name1[i]==' ')
 		{
-			for(j=i; j<len; j++)
+	      for(j=i; j<len; j++)
 			{
-				name1[j]=name1[j+1];
+		name1[j]=name1[j+1];
 			}
 		len--;
 		}
@@ -55,9 +48,7 @@ int main()
             exit(0);
         }
 
-    }
-
-		fclose(fp2);
+    }	fclose(fp2);
 		fp2 = fopen("voters.txt","a");
 		fprintf(fp2,"%s\n",name1);
 
