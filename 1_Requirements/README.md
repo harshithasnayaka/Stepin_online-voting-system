@@ -23,7 +23,37 @@ Online Voting is a c language voting system that will help you manage your elect
 | Ls02 |isValid()HS3|To authenticate student|Imlpemented|
 | Ls03 |getwinner()HS6|To get winner of the election|Imlpemented|
 
+## SWAT Analysis:
 
+### Strenght:
+- Student  can cast vote to desired canidate.
+- application is Secure
+  
+### Weakness:
+- No Encryption
+- Only for Branch Eductaional Institute.
+
+
+  
+## 4W's and 1 H:
+    
+    1. WHO:
+        Usefull for any one who want to conduct election.
+    
+    2. WHAT:
+        This Application uses file read write and count method to store and process elections.
+    
+    3. WHEN:
+        This project can be used by Educational Institutes for choosing best from the list of candidates.
+    
+    4. WHY:
+        It is more secure then exixting system.
+    
+    5. HOW:
+        Implemented using Structure and file read write functions of C programs.
+        To run the application:
+            1. GCC compiler.
+            2. Any operating system (preffered Windows or Linux).
 
 
 
