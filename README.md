@@ -19,3 +19,7 @@ Online Voting is a web-based voting system that will help you manage your electi
 [![Contribution Check - Git Inspector](https://github.com/harshithasnayaka/Stepin_online-voting-system/actions/workflows/gitinspector.yml/badge.svg)](https://github.com/harshithasnayaka/Stepin_online-voting-system/actions/workflows/gitinspector.yml)
 
 [![Unit Testing - Unity](https://github.com/harshithasnayaka/Stepin_online-voting-system/actions/workflows/unity.yml/badge.svg)](https://github.com/harshithasnayaka/Stepin_online-voting-system/actions/workflows/unity.yml)
+
+https://www.code-inspector.com/project/27801/score/svg
+
+https://www.code-inspector.com/project/27801/status/svg
