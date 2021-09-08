@@ -8,6 +8,8 @@ Online Voting is a web-based voting system that will help you manage your electi
 * For Admin Panel Use Username: "admin" Password: "admin"
 * For student login enter student id "year/branchcode/rollnumber"
 
+# Badges
+
 [![CI](https://github.com/harshithasnayaka/Stepin_online-voting-system/actions/workflows/main.yml/badge.svg)](https://github.com/harshithasnayaka/Stepin_online-voting-system/actions/workflows/main.yml)
 
 [![Code Quality - Static Code - Cppcheck](https://github.com/harshithasnayaka/Stepin_online-voting-system/actions/workflows/cppcheck.yml/badge.svg)](https://github.com/harshithasnayaka/Stepin_online-voting-system/actions/workflows/cppcheck.yml)
