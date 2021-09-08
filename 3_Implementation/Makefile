@@ -1,5 +1,5 @@
 PROJ_NAME = online-voting-system
-SRC = main.c Election.h
+SRC = elections.c header.h
 
 #To check if the OS is windows or linux and set the executable file extension and delete command accordingly
 ifdef OS
