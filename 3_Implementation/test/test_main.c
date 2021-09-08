@@ -1,5 +1,5 @@
 /**
- * @file main_test.c
+ * @file test_main.c
  * @author your name (you@domain.com)
  * @brief 
  * @version 0.1
