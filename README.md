@@ -8,6 +8,18 @@ Online Voting is a web-based voting system that will help you manage your electi
 * For Admin Panel Use Username: "admin" Password: "admin"
 * For student login enter student id "year/branchcode/rollnumber"
 
+# Folder Structure:
+|Folder Name|Folder Defination|
+|---------------------------------|-----------------------------------------------------------------------------------------------------------|
+| 1_Requirements | Includes Intrdocution, Research, Defining the Application, Objective, SWAT Analysis, Functional and Non-Functional Requireents and Future Work|
+| 2_Architecture | Includes Behaviour and Strucural Diagrams |
+| 3_Implementation | Includes Source code, Header files, make file, unit test files |
+| 4_TestPlanAndOutput | Includes the High level and low level test plan with corresponding outputs |
+| 5_Report | Includes Documentation |
+| 6_ImagesAndvideos | Includes Output image  |
+| 7_other | Includes Future Work and Future Test |
+
+
 # Badges
 |     CI             | code Qulality static code| contridution Check| unit test|Code quality Score| Code Grade|
 |--------------------------|-------------------------------|-------------------------|--------------|-------------------------|---------------|
