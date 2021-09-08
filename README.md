@@ -9,17 +9,6 @@ Online Voting is a web-based voting system that will help you manage your electi
 * For student login enter student id "year/branchcode/rollnumber"
 
 # Badges
-
-
-[![CI](https://github.com/harshithasnayaka/Stepin_online-voting-system/actions/workflows/main.yml/badge.svg)](https://github.com/harshithasnayaka/Stepin_online-voting-system/actions/workflows/main.yml)
-
-[![Code Quality - Static Code - Cppcheck](https://github.com/harshithasnayaka/Stepin_online-voting-system/actions/workflows/cppcheck.yml/badge.svg)](https://github.com/harshithasnayaka/Stepin_online-voting-system/actions/workflows/cppcheck.yml)
-
-
-[![Contribution Check - Git Inspector](https://github.com/harshithasnayaka/Stepin_online-voting-system/actions/workflows/gitinspector.yml/badge.svg)](https://github.com/harshithasnayaka/Stepin_online-voting-system/actions/workflows/gitinspector.yml)
-
-[![Unit Testing - Unity](https://github.com/harshithasnayaka/Stepin_online-voting-system/actions/workflows/unity.yml/badge.svg)](https://github.com/harshithasnayaka/Stepin_online-voting-system/actions/workflows/unity.yml)
-
-![](https://www.code-inspector.com/project/27801/score/svg)
-
-![](https://www.code-inspector.com/project/27801/status/svg)
+|     CI             | code Qulality static code| contridution Check| unit test|Code quality Score| Code Grade|
+|--------------------------|-------------------------------|-------------------------|--------------|-------------------------|---------------|
+|[![CI](https://github.com/harshithasnayaka/Stepin_online-voting-system/actions/workflows/main.yml/badge.svg)](https://github.com/harshithasnayaka/Stepin_online-voting-system/actions/workflows/main.yml)|[![Code Quality - Static Code - Cppcheck](https://github.com/harshithasnayaka/Stepin_online-voting-system/actions/workflows/cppcheck.yml/badge.svg)](https://github.com/harshithasnayaka/Stepin_online-voting-system/actions/workflows/cppcheck.yml)|[![Contribution Check - Git Inspector](https://github.com/harshithasnayaka/Stepin_online-voting-system/actions/workflows/gitinspector.yml/badge.svg)](https://github.com/harshithasnayaka/Stepin_online-voting-system/actions/workflows/gitinspector.yml)|[![Unit Testing - Unity](https://github.com/harshithasnayaka/Stepin_online-voting-system/actions/workflows/unity.yml/badge.svg)](https://github.com/harshithasnayaka/Stepin_online-voting-system/actions/workflows/unity.yml)|![](https://www.code-inspector.com/project/27801/score/svg)|![](https://www.code-inspector.com/project/27801/status/svg)|
